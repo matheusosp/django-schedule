@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+    </style>
+    <title>Agenda</title>
+</head>
+<body style="display: flex; align-items: center; justify-content: center; flex-direction: column">
+    <h1>Login</h1>
+    <form action="submit" method="POST" >{% csrf_token %}
+            <label style="margin-bottom: 10px;">Username: 
+                <input type='text' name='username'/>
+            </label>
+            <label style="margin-bottom: 10px;">Password:   
+                <input type="password" name='password'>
+            </label>
+            <input type="submit" value="Submit">
+    </form>
+
+    {% for message in messages %}
+        <strong>Error</strong> {{ message }}
+    {% endfor %}
+</body>
+</html>

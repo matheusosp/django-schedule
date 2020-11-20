@@ -1,0 +1,30 @@
+{% extends "model-page.html" %}
+{% block content %}
+    
+    <h2>Agendamentos</h2>
+
+    <a href="event/">
+    <button type="button">New event </button>
+    </a>
+    <ul style="font-size: 18px;">
+        {% for item in events %}
+        
+        <li>
+
+            <div style={% if item.get_delayed_event == True %} "color:red" 
+            
+            {% elif item.get_delayed_event == False %}
+                "color:yellow"
+                
+            {% endif %}>
+                {{ item.title }} - {{ item.get_data_event }}
+                (<a href="event/?id={{ item.id }}">Alterar</a>/
+                <a href="event/delete/{{ item.id }}">Delete</a>)
+            </div>
+        </li>
+        
+        {% endfor %}
+    </ul>
+    </body>
+    </html>
+{% endblock  %}
